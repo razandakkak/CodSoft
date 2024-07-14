@@ -1,0 +1,63 @@
+#include <iostream>
+#include <limits> // For numeric_limits
+
+
+using namespace std;
+
+int main() {
+    int result = 0;
+    int number1 = 0;
+    int number2 = 0;
+    char op;
+    char cont;
+
+    cout << "So let us perform some operations!" << endl;
+     do{
+        cout << "Enter your first number: ";
+        while (!(cin >> number1)) {
+            cout << "Error: Please enter a valid integer: ";
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+        }
+
+        cout << "Enter your second number: ";
+        while (!(cin >> number2)) {
+            cout << "Error: Please enter a valid integer: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+      
+      cout << "What operation do you want (+, -, *, /): ";
+      cin >> op;
+
+
+        switch (op) {
+            case '-':
+                result = number1 - number2;
+                cout << number1 - number2 <<endl;
+                break;
+            case '+':
+                result = number1 + number2;
+                cout << result;
+                break;
+            case '*':
+                cout << "Result: " << number1 * number2 << endl;
+                break;
+            case '/':
+                if (number2 != 0){
+                 cout << number1 / number2 << endl;}
+                else{
+                 cout << "Error: Division by zero" << endl;}
+                break;
+            default:
+                cout << "Error: Invalid operator" << endl;
+                break;
+
+        } 
+        cout << "Do you want to perform another operation? (y/n): ";
+        cin >> cont;
+      }
+        while (cont == 'y' || cont == 'Y');
+            
+    return 0; 
+    }
